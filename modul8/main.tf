@@ -30,7 +30,8 @@ resource "azurerm_resource_group" "main" {
 
 # Kaller på den gjenbrukbare nettverksmodulen
 module "network" {
-  source              = "./modules/network"
+  source = "git::https://github.com/joakimboe-tisip/Terraform--vinng-TISIP.git//modules/network?ref=network-v1.1.0"
+
   project             = local.name_prefix
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
