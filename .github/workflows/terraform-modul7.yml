@@ -18,6 +18,10 @@ permissions:
   contents: read
   pull-requests: write
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 230e1b12f31dca864027c44538240372d4d12aa1
 concurrency:
   group: terraform-modul7-${{ github.ref }}
   cancel-in-progress: false
@@ -47,7 +51,7 @@ jobs:
     needs: build
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    environment: dev
+  
     steps:
       - uses: actions/checkout@v4
       - uses: Azure/login@v3.1.0
