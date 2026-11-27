@@ -21,3 +21,10 @@ variable "resource_group_name" {
   description = "Navn på ressursgruppen"
   type        = string
 }
+
+# Hvilket nettverk som kan bruke SSH
+variable "ssh_source_prefix" {
+  description = "Tillatt kilde for SSH"
+  type        = string
+  default     = "10.0.0.0/16"
+}

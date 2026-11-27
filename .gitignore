@@ -4,3 +4,4 @@
 *.tfplan
 crash.log
 *.tfstate.lock.info
+modules/network/.terraform.lock.hcl

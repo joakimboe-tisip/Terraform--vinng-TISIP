@@ -1,7 +1,7 @@
 
 # Kjører kontrollene på nettverksmodulen
 
-Set-Location "$PSScriptRoot\modules\network"
+Set-Location -Path $PSScriptRoot -ErrorAction Stop
 
 terraform fmt -check -recursive
 if ($LASTEXITCODE -ne 0) { exit 1 }
