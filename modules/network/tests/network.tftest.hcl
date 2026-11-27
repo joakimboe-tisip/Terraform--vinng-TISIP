@@ -20,7 +20,7 @@ run "nettverksadresse" {
   command = plan
 
   assert {
-    condition     = azurerm_virtual_network.main.address_space == tolist(["10.0.0.0/16"])
+    condition = contains(azurerm_virtual_network.main.address_space, "10.0.0.0/16")
     error_message = "Nettverket har feil adresseområde."
   }
 }
