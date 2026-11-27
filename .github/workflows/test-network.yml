@@ -1,0 +1,38 @@
+
+name: Test nettverksmodul
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: modules/network
+
+    steps:
+      - name: Hent kode
+        uses: actions/checkout@v4
+
+      - name: Installer Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Kontroller formatering
+        run: terraform fmt -check -recursive
+
+      - name: Initialiser Terraform
+        run: terraform init -backend=false
+
+      - name: Valider Terraform
+        run: terraform validate
+
+      - name: Kjor Terraform-tester
+        run: terraform test
