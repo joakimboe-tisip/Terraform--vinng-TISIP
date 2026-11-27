@@ -3,6 +3,11 @@
 variable "project" {
   description = "Navn på prosjektet"
   type        = string
+
+  validation {
+    condition     = can(regex("^[a-z][a-z0-9-]{2,29}$", var.project))
+    error_message = "Prosjektnavnet må være 3-30 tegn og bruke små bokstaver, tall eller bindestrek. Det må begynne med en bokstav."
+  }
 }
 
 # Azure-regionen
