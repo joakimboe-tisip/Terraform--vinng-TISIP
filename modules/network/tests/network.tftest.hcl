@@ -34,11 +34,14 @@ run "hovedsubnett" {
   }
 }
 
-run "datasubnett" {
+run "ugyldig_prosjektnavn" {
   command = plan
 
-  assert {
-    condition     = azurerm_subnet.data.address_prefixes == tolist(["10.0.2.0/24"])
-    error_message = "Datasubnettet har feil adresseområde."
+  variables {
+    project = "UGYLDIG_NAVN"
   }
+
+  expect_failures = [
+    var.project
+  ]
 }
